@@ -18,7 +18,7 @@
   "bugs": {
     "url": "https://github.com/anirbmuk/ng-capslock-demo/issues"
   },
-  "homepage": "https://dev.to/anirbmuk/handle-caps-lock-onoff-event-in-angular-3cgp",
+  "homepage": "https://dev.to/anirbmuk/handle-caps-lock-onoff-event-in-angular-52go",
   "private": true,
   "dependencies": {
     "@angular/animations": "~13.3.0",
