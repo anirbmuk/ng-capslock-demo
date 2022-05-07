@@ -5,4 +5,4 @@ Angular 13.3.0 application to demonstrate how to display CAPS-LOCK-ON/OFF messag
 https://dev.to/anirbmuk/handle-caps-lock-onoff-event-in-angular-52go  
 
 # Preview
-![preview](img/preview.gif)   
+![preview](img/preview-demo.gif)   
