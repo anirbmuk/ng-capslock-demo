@@ -1,1 +1,20 @@
 /* You can add global styles to this file, and also import other style files */
+
+body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+.text-center {
+  text-align: center;
+}
+
+.my-10 {
+  margin: 10px auto;
+}
+
+.mat-form-field {
+  display: block !important;
+}
+
+.mat-raised-button.mat-primary {
+  margin: 1rem auto;
+  width: 100%;
+}

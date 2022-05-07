@@ -1,0 +1,26 @@
+<mat-card>
+  <div class="my-10 text-center">
+    <h3>SIGN IN</h3>
+  </div>
+  <form [formGroup]="sigininForm">
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input matInput required type="email" formControlName="emailField">
+      <mat-error *ngIf="sigininForm.get('emailField')?.hasError('required')">
+        Email is required
+      </mat-error>
+      <mat-error *ngIf="sigininForm.get('emailField')?.hasError('email')">
+        Email is not in standard format
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Password</mat-label>
+      <input matInput required type="password" formControlName="passwordField" #passwordField>
+      <mat-error *ngIf="sigininForm.get('passwordField')?.hasError('required') && !capsLockMessage">
+        Password is required
+      </mat-error>
+      <mat-hint *ngIf="capsLockMessage">{{ capsLockMessage }}</mat-hint>
+    </mat-form-field>
+    <button mat-raised-button color="primary" type="submit">Submit</button>
+  </form>
+</mat-card>

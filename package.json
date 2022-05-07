@@ -1,6 +1,7 @@
 {
   "name": "ng-capslock-demo",
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "description": "Angular 13.3.0 application to demonstrate how to display CAPS-LOCK-ON/OFF message",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -8,13 +9,25 @@
     "watch": "ng build --watch --configuration development",
     "test": "ng test"
   },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/anirbmuk/ng-capslock-demo.git"
+  },
+  "author": "anirbmuk",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/anirbmuk/ng-capslock-demo/issues"
+  },
+  "homepage": "https://dev.to/anirbmuk/handle-caps-lock-onoff-event-in-angular-3cgp",
   "private": true,
   "dependencies": {
     "@angular/animations": "~13.3.0",
+    "@angular/cdk": "^13.3.6",
     "@angular/common": "~13.3.0",
     "@angular/compiler": "~13.3.0",
     "@angular/core": "~13.3.0",
     "@angular/forms": "~13.3.0",
+    "@angular/material": "^13.3.6",
     "@angular/platform-browser": "~13.3.0",
     "@angular/platform-browser-dynamic": "~13.3.0",
     "@angular/router": "~13.3.0",
@@ -34,6 +47,7 @@
     "karma-coverage": "~2.1.0",
     "karma-jasmine": "~4.0.0",
     "karma-jasmine-html-reporter": "~1.7.0",
+    "prettier": "^2.6.2",
     "typescript": "~4.6.2"
   }
 }
