@@ -1,18 +1,13 @@
-import { DOCUMENT, isPlatformBrowser } from '@angular/common';
 import {
   AfterViewInit,
   ChangeDetectionStrategy,
   ChangeDetectorRef,
   Component,
   ElementRef,
-  Inject,
   OnDestroy,
-  OnInit,
-  PLATFORM_ID,
   ViewChild,
 } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { filter, fromEvent, map, of, Subscription, tap } from 'rxjs';
 
 @Component({
   selector: 'app-signin',
@@ -20,11 +15,10 @@ import { filter, fromEvent, map, of, Subscription, tap } from 'rxjs';
   styleUrls: ['./signin.component.scss'],
   changeDetection: ChangeDetectionStrategy.OnPush,
 })
-export class SigninComponent implements OnInit, AfterViewInit, OnDestroy {
+export class SigninComponent implements AfterViewInit, OnDestroy {
   @ViewChild('passwordField') passwordField?: ElementRef<HTMLInputElement>;
 
   capsLockMessage: string | undefined;
-  private documentVisibleSub?: Subscription;
 
   readonly sigininForm = new FormGroup({
     emailField: new FormControl('', [Validators.required, Validators.email]),
@@ -34,28 +28,7 @@ export class SigninComponent implements OnInit, AfterViewInit, OnDestroy {
     ]),
   });
 
-  readonly documentVisible$ = isPlatformBrowser(this.platformId as Object)
-    ? fromEvent(this.document, 'visibilitychange').pipe(
-        map(() => this.document.visibilityState),
-        filter((value) => value === 'visible')
-      )
-    : of('visible');
-
-  constructor(
-    private readonly cdRef: ChangeDetectorRef,
-    @Inject(DOCUMENT) private readonly document: Document,
-    @Inject(PLATFORM_ID) private readonly platformId: unknown
-  ) {}
-
-  ngOnInit(): void {
-    this.documentVisibleSub = this.documentVisible$.subscribe(() => {
-      this.passwordField?.nativeElement?.focus?.();
-      this.passwordField?.nativeElement?.dispatchEvent(
-        new KeyboardEvent('keyup')
-      );
-    });
-    this.cdRef.markForCheck();
-  }
+  constructor(private readonly cdRef: ChangeDetectorRef) {}
 
   ngAfterViewInit(): void {
     const eventHandler = (event: KeyboardEvent | MouseEvent) => {
@@ -83,6 +56,5 @@ export class SigninComponent implements OnInit, AfterViewInit, OnDestroy {
   ngOnDestroy(): void {
     this.passwordField?.nativeElement?.removeAllListeners?.('keyup');
     this.passwordField?.nativeElement?.removeAllListeners?.('mousedown');
-    this.documentVisibleSub?.unsubscribe();
   }
 }
